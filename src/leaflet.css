@@ -4,3 +4,7 @@
     width: 100wh;
     height: 250px;
 }
+
+.react-datepicker-popper {
+    z-index: 10000;
+}

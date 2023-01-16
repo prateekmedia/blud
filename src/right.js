@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import { Button } from "antd";
 import Dialog from './dialog'
 
-const RightMenu = (setBlud, blud, addBlud) => {
+const RightMenu = (addBlud) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = async () => {
-        await addBlud();
-        setIsModalOpen(false);
+    const handleOk = async (selectedLocation, startDate, endDate, phoneNumber) => {
+        try {
+            await addBlud.addBlud.addBlud(selectedLocation, startDate, endDate, phoneNumber, () => setIsModalOpen(false));
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handleCancel = () => {
@@ -30,8 +33,6 @@ const RightMenu = (setBlud, blud, addBlud) => {
                 handleCancel={handleCancel}
                 handleOk={handleOk}
                 open={isModalOpen}
-                setBlud={setBlud}
-                blud={blud}
             >
             </Dialog>
         </div >
