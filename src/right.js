@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Menu, Button, Modal, Input } from "antd";
-import { GoLocation } from "react-icons/go";
-import { WarningOutlined, PhoneOutlined } from '@ant-design/icons';
+import { Button } from "antd";
+import Dialog from './dialog'
 
-const RightMenu = () => {
+const RightMenu = (setBlud, blud, addBlud) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
+        await addBlud();
         setIsModalOpen(false);
     };
 
@@ -19,23 +19,22 @@ const RightMenu = () => {
     };
 
     return (
-        <Menu mode="horizontal">
-            <Menu.Item key="location">
+        <div >
+            {/* <Menu.Item key="location">
                 <a href="#!"><GoLocation size={12} /> Halduchaur</a>
-            </Menu.Item>
+            </Menu.Item> */}
             <Button type="primary" onClick={showModal}>
                 Submission
             </Button>
-            <Modal title="Blood Camp Submission" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>We will need some basic info for adding a blood camp</p>
-                <Input placeholder="Camp Name" style={{ "margin-bottom": "12px" }}></Input>
-                <Input placeholder="Begin Date" style={{ "margin-bottom": "12px" }}></Input>
-                <Input placeholder="End Date" style={{ "margin-bottom": "12px" }}></Input>
-                <Input placeholder="Begin Time" style={{ "margin-bottom": "12px" }}></Input>
-                <Input placeholder="End Time" style={{ "margin-bottom": "12px" }}></Input>
-                <p>UI For selecting Map</p>
-            </Modal>
-        </Menu>
+            <Dialog
+                handleCancel={handleCancel}
+                handleOk={handleOk}
+                open={isModalOpen}
+                setBlud={setBlud}
+                blud={blud}
+            >
+            </Dialog>
+        </div >
     );
 }
 
