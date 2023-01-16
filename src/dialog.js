@@ -48,7 +48,7 @@ const Dialog = ({ open, handleOk, handleCancel }) => {
 
         <Input type="tel" placeholder="Phone Number" style={{
             marginBottom: "12px"
-        }} onChange={(phoneNumber) => setPhoneNumber(phoneNumber.event.value)} ></Input >
+        }} onChange={(phoneNumber) => setPhoneNumber(phoneNumber.target.value)} ></Input >
         <DatePicker placeholder="Start Date" className="ant-input css-dev-only-do-not-override-uxn03c" showTimeSelect selected={startDate}
             onChange={(date) => setStartDate(date)} />
         <div style={{ margin: "12px 12px" }}></div>

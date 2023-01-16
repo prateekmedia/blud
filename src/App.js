@@ -64,7 +64,6 @@ const App = () => {
     }
   }
   const addBlud = async (selectedLocation, startDate, endDate, phoneNumber, onSuccess) => {
-    console.log(startDate, endDate, phoneNumber);
     try {
       const { ethereum } = window
       if (ethereum) {
@@ -158,9 +157,14 @@ const App = () => {
                 <iframe title='Map' width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0" src={url}>
                 </iframe></div>}
               actions={[
-                <PhoneOutlined key="phone" onClick={function () {
-                  navigator.clipboard.writeText(blud.phoneNumber);
-                  alert("Phone number copied!");
+                <PhoneOutlined key="phone" onClick={async function () {
+                  try {
+                    await navigator.clipboard.writeText(blud.phone);
+                    alert("Phone number copied!");
+                    console.log('Text copied to clipboard');
+                  } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                  }
                 }} />,
                 <WarningOutlined key="report" onClick={
                   reportBlud(blud.id)
