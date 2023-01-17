@@ -18,8 +18,8 @@ const myIcon = L.icon({
 const Dialog = ({ open, handleOk, handleCancel }) => {
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState(null);
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [startDate, setStartDate] = useState(Date.now());
+    const [endDate, setEndDate] = useState(Date.now());
 
     const MapEvents = () => {
         useMapEvents({
@@ -49,10 +49,12 @@ const Dialog = ({ open, handleOk, handleCancel }) => {
         <Input type="tel" placeholder="Phone Number" style={{
             marginBottom: "12px"
         }} onChange={(phoneNumber) => setPhoneNumber(phoneNumber.target.value)} ></Input >
-        <DatePicker placeholder="Start Date" className="ant-input css-dev-only-do-not-override-uxn03c" showTimeSelect selected={startDate}
+        <DatePicker
+            dateFormat="Pp" placeholder="Start Date" className="ant-input css-dev-only-do-not-override-uxn03c" showTimeSelect selected={startDate}
             onChange={(date) => setStartDate(date)} />
         <div style={{ margin: "12px 12px" }}></div>
         <DatePicker placeholder="End Date" className="ant-input css-dev-only-do-not-override-uxn03c"
+            dateFormat="Pp"
             showTimeSelect selected={endDate}
             onChange={(date) => setEndDate(date)} />
         <div style={{ margin: "12px 12px" }}></div>
