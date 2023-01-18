@@ -34,6 +34,7 @@ const Dialog = ({ open, handleOk, handleCancel }) => {
         <MapContainer
             center={[29.208514556408236, 79.493723]}
             zoom={12}
+            className="leaflet-container"
             scrollWheelZoom={true}
         >
             <TileLayer

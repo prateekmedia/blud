@@ -78,6 +78,7 @@ const App = () => {
           // setBluds([...tasks, task])
           console.log('Added Blud')
           onSuccess();
+          alert("Successfully Added Blud!");
         }).catch(err => { console.log(err) })
       } else {
         console.log('Metamask not detected')
